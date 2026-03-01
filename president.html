@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>President Voting</title>
 <style>
 body::before{
@@ -18,7 +19,7 @@ body::before{
 
 body{font-family:Arial;background:#f2f2f2;text-align:center;}
 .card{background:#fff;width:220px;margin:12px;padding:15px;
-display:inline-block;border-radius:12px;box-shadow:0 0 8px #aaa;}
+display:inline-block;border-radius:12px;box-shadow:0 0 8px #aaa; cursor: pointer;}
 img{width:120px;height:120px;border-radius:50%;}
 button{padding:10px 30px;background:#007bff;color:white;border:none;}
 </style>
@@ -29,36 +30,44 @@ button{padding:10px 30px;background:#007bff;color:white;border:none;}
 
 <form onsubmit="return save()">
 
+<label for="pres1">
 <div class="card">
 <img src="images/p1.jpg">
 <h4>Rahul Sharma</h4>
 <p>CSE – 3rd Year</p>
 <p><i>"Leadership with Integrity"</i></p>
-<input type="radio" name="pres" value="Rahul Sharma" required>
+<input type="radio" name="pres" id="pres1" value="Rahul Sharma">
 </div>
+</label>
 
+<label for="pres2">
 <div class="card">
 <img src="images/p2.jpg">
 <h4>Ananya Rao</h4>
 <p>ECE – 4th Year</p>
 <p><i>"Voice of Students"</i></p>
-<input type="radio" name="pres" value="Ananya Rao">
+<input type="radio" name="pres" id="pres2" value="Ananya Rao">
 </div>
+</label>
 
+<label for="pres3">
 <div class="card">
 <img src="images/p3.jpg">
 <h4>Mohit Verma</h4>
 <p>ME – 3rd Year</p>
 <p><i>"Unity & Progress"</i></p>
-<input type="radio" name="pres" value="Mohit Verma">
+<input type="radio" name="pres" id="pres3" value="Mohit Verma">
 </div>
+</label>
 
 <div class="card">
+<label for="pres4">
 <img src="images/p4.jpg">
 <h4>Sneha Patil</h4>
 <p>CE – 2nd Year</p>
 <p><i>"Together We Rise"</i></p>
-<input type="radio" name="pres" value="Sneha Patil">
+<input type="radio" name="pres" id="pres4" value="Sneha Patil">
+</label>
 </div>
 
 <br><br>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vote Submitted</title>
 
 <style>
@@ -76,28 +77,51 @@ th{
 </div>
 
 <script>
-document.getElementById("name").innerText =
-    localStorage.getItem("currentName");
+let name = localStorage.getItem("currentName") || "-";
+let reg = localStorage.getItem("currentReg") || "-";
+let president = localStorage.getItem("president") || "-";
+let vice = localStorage.getItem("vicePresident") || "-";
 
-document.getElementById("reg").innerText =
-    localStorage.getItem("currentReg");
-
-document.getElementById("pres").innerText =
-    localStorage.getItem("president") || "-";
-
-document.getElementById("vice").innerText =
-    localStorage.getItem("vicePresident") || "-";
+document.getElementById("name").innerText = name;
+document.getElementById("reg").innerText = reg;
+document.getElementById("pres").innerText = president;
+document.getElementById("vice").innerText = vice;
 
 function showClub(id, key){
     let data = JSON.parse(localStorage.getItem(key) || "[]");
     document.getElementById(id).innerText =
         data.length ? data.join(" , ") : "-";
+    return data.length ? data.join(", ") : "-";
 }
 
-showClub("cultural","cultural");
-showClub("sports","sports");
-showClub("tech","tech");
-showClub("nss","nss");
+let cultural = showClub("cultural","cultural");
+let sports = showClub("sports","sports");
+let tech = showClub("tech","tech");
+let nss = showClub("nss","nss");
+
+
+// ================================
+// 📲 WhatsApp Integration
+// ================================
+
+// 👉 PUT YOUR WHATSAPP NUMBER HERE (with country code, no + sign)
+let phoneNumber = "918073569852";
+
+let message =
+"🗳 *New Vote Submitted* %0A%0A" +
+"*Name:* " + name + "%0A" +
+"*Register No:* " + reg + "%0A%0A" +
+"*President:* " + president + "%0A" +
+"*Vice President:* " + vice + "%0A%0A" +
+"*Cultural Club:* " + cultural + "%0A" +
+"*Sports Club:* " + sports + "%0A" +
+"*Technical Club:* " + tech + "%0A" +
+"*NSS Club:* " + nss;
+
+let whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + message;
+
+// Open WhatsApp automatically
+window.open(whatsappURL, "_blank");
 </script>
 
 </body>
