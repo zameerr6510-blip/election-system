@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>President Voting</title>
+<style>
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url("https://www.mbacollegesbangalore.in/wp-content/uploads/2017/07/Karnataka-College-of-Management-Bangalore-Campus.png")
+               no-repeat center center/cover;
+    opacity:0.25;     /* adjust opacity */
+    z-index:-1;
+}
+
+body{font-family:Arial;background:#f2f2f2;text-align:center;}
+.card{background:#fff;width:220px;margin:12px;padding:15px;
+display:inline-block;border-radius:12px;box-shadow:0 0 8px #aaa;}
+img{width:120px;height:120px;border-radius:50%;}
+button{padding:10px 30px;background:#007bff;color:white;border:none;}
+</style>
+</head>
+
+<body>
+<h2>Vote for President</h2>
+
+<form onsubmit="return save()">
+
+<div class="card">
+<img src="images/p1.jpg">
+<h4>Rahul Sharma</h4>
+<p>CSE – 3rd Year</p>
+<p><i>"Leadership with Integrity"</i></p>
+<input type="radio" name="pres" value="Rahul Sharma" required>
+</div>
+
+<div class="card">
+<img src="images/p2.jpg">
+<h4>Ananya Rao</h4>
+<p>ECE – 4th Year</p>
+<p><i>"Voice of Students"</i></p>
+<input type="radio" name="pres" value="Ananya Rao">
+</div>
+
+<div class="card">
+<img src="images/p3.jpg">
+<h4>Mohit Verma</h4>
+<p>ME – 3rd Year</p>
+<p><i>"Unity & Progress"</i></p>
+<input type="radio" name="pres" value="Mohit Verma">
+</div>
+
+<div class="card">
+<img src="images/p4.jpg">
+<h4>Sneha Patil</h4>
+<p>CE – 2nd Year</p>
+<p><i>"Together We Rise"</i></p>
+<input type="radio" name="pres" value="Sneha Patil">
+</div>
+
+<br><br>
+<button>Next</button>
+</form>
+
+<script>
+function save() {
+
+    // get selected president
+    let v = document.querySelector('input[name="pres"]:checked').value;
+
+    // save selected president
+    localStorage.setItem("president", v);
+
+    // count votes
+    let k = "president_" + v;
+    localStorage.setItem(k, (Number(localStorage.getItem(k)) || 0) + 1);
+
+    // 🔒 lock president vote
+    let reg = localStorage.getItem("currentReg");
+    localStorage.setItem("presidentLocked_" + reg, "true");
+
+    // go to vice president page
+    location.href = "vice.html";
+
+    return false;
+}
+</script>
+
+<script>
+// 🔐 prevent illegal access
+
+let reg = localStorage.getItem("currentReg");
+
+// not logged in → back to login
+if (!reg) {
+    window.location.href = "index.html";
+}
+
+// already voted president → skip page
+if (localStorage.getItem("presidentLocked_" + reg)) {
+    window.location.href = "vice.html";
+}
+</script>
+
+
+
+</body>
+</html>
