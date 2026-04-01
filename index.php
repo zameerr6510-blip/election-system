@@ -91,36 +91,24 @@ button:hover{
 
 <!-- ===== LOGIN FORM ===== -->
 <div class="box">
-<form onsubmit="return login()">
-    <input type="text" id="name" placeholder="Student Name" required>
-    <input type="text" id="reg" placeholder="Register Number" required>
-    <button type="submit">Login</button>
+<form action="login.php" method="POST">
+
+<input type="text" name="name" placeholder="Student Name" required>
+
+<input type="text" name="reg" placeholder="Register Number" required>
+
+<button type="submit">Login</button>
+
 </form>
 </div>
 
-<!-- ===== LOGIN SCRIPT ===== -->
-<script>
-function login(){
-    let reg = document.getElementById("reg").value;
 
-    if(localStorage.getItem("voted_" + reg)){
-        alert("You have already voted!");
-        return false;
-    }
-
-    localStorage.setItem("currentName", document.getElementById("name").value);
-    localStorage.setItem("currentReg", reg);
-
-    window.location.href = "rules.html";
-    return false;
-}
-</script>
 
 <!-- ===== ALREADY VOTED CHECK ===== -->
 <script>
 if(localStorage.getItem("voted_" + localStorage.getItem("currentReg"))){
     alert("You have already voted. You cannot vote again.");
-    window.location.href = "voter_result.html";
+    window.location.href = "voter_result.php";
 }
 </script>
 

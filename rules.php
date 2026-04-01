@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rules</title>
 <style>
 body::before{
@@ -84,7 +85,7 @@ button{
 </div>
 
 <br>
-<button onclick="location.href='president.html'">Proceed to Vote</button>
+<button onclick="location.href='president.php'">Proceed to Vote</button>
 </div>
 
 </body>
